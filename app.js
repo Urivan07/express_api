@@ -1,13 +1,25 @@
-// usando un objeto de express
+// Usando un objeto de express
 const express = require("express");
-//app de express
+// App de express
 const app = express();
 // Indicamos que usaremos JSON
 app.use(express.json());
-// puerto en que vamos a ver nuestra app localhost:3000
+// Puerto en que vamos a ver nuestra app localhost:3000
 const port = 3000;
 
-// con esto inicializamos el app
+// Esto es un endpoint
+// Routes
+// Metodos HTTP: GET, POST, PUT, DELETE
+app.get("/v1/explorers", (req, res) => {
+  console.log(`GET Explorers V1 API ${new Date()}`);
+  const explorer1 = { id: 1, name: "Explorer1" };
+  const explorer2 = { id: 2, name: "Explorer2" };
+  const explorers = [explorer1, explorer2];
+  // HTTP code status: 200
+  res.status(200).json(explorers)
+});
+
+// Con esto inicializamos el app
 app.listen(port, () => {
   console.log(`Example app listeting on port ${port}`);
 });
